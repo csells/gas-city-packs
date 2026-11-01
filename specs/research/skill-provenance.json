@@ -1,0 +1,12 @@
+{
+  "source": "csells/sb8",
+  "commit": "406aa8a3d",
+  "path": "chris-bot/skill/chris-bot",
+  "files": {
+    "SKILL.md": "039a1151323acefdb0bd7db37b66fa895b086de0d884158c413b8f487e5796ed",
+    "references/bdp.md": "f1943c880d42c43b5882bb91f8df0b716325c67971eecd77eb6b38de287b4d37",
+    "references/career.md": "9862a05583c25ec62a477017a08e6a9c01bec98f7a4c861fd5f121c62a6616ea",
+    "references/conversation.md": "d60c97d2cf7452d97a906c8943739d4ea21d9a8b8e2b45d0c64ece59d07c32eb",
+    "scripts/bdp.py": "b506912bf3c0e24a2807242e63f52e30cbd85f56b6c3988fe988868f5131f017"
+  }
+}

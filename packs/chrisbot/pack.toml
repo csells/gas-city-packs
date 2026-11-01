@@ -1,0 +1,8 @@
+[pack]
+name = "csells/chrisbot"
+schema = 2
+version = "1.0.0"
+description = "Talk with Chris Sells through his published work and public BDP endpoint."
+
+[providers.chrisbot-claude]
+base = "builtin:claude"

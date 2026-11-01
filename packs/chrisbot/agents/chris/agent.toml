@@ -1,0 +1,4 @@
+scope = "city"
+description = "Chris Sells: a colleague to talk through software, teams, tools and new ideas."
+provider = "chrisbot-claude"
+option_defaults = { model = "sonnet" }
