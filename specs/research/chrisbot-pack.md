@@ -61,3 +61,32 @@ upstream core advisory does not require a Chris pack change.
 For maintenance, run `python3 -m unittest discover -s tests -v`. To inspect the
 installed artifact, run `gc config show --validate`, `gc import check` and
 `gc prime chrisbot.chris --strict` from a consuming city.
+
+## Public installation and conversation results
+
+Published pack payload commit: `446e02df654cd3f0c98ec7d909539496fbc168ba`.
+Anonymous GitHub raw access succeeds and matches the local manifest. The exact
+README `gc import add` command fetched the public pack into a new disposable
+city, wrote the pinned SHA into the import and `packs.lock`, and passed
+`gc import check` (one remote import). Strict public prompt rendering succeeded.
+The resolved agent is city-scoped `chris`, provider `chrisbot-claude`, model
+`sonnet`; the import qualifies its runtime name as `chrisbot.chris`.
+Actual materialization from the public download produced a skill whose five
+files exactly match the provenance hashes. Its context command read the real
+Microsoft-to-Telerik announcement through production BDP.
+
+Two native Sonnet turns used the rendered pack prompt and materialized skill.
+Both completed without execution errors and the exact-input audit passed. The
+first reply retrieved career context and compared developer advocacy with Gas
+City; the follow-up applied that perspective to a small team's concern about
+losing interesting work. The model retained context. Ten HTTP receipts include
+nine successful reads and one correctly refused overbroad Query (413); the
+agent narrowed its retrieval. Three actual Link-walk requests were recorded.
+Both answers were reviewed against their source context. The voice remains
+somewhat essay-like and can explain evidence limits too much; this is not a
+claim of indistinguishability from Chris or exhaustive corpus coverage.
+
+The test harness ran the native Claude provider after Gas City prompt rendering
+and skill materialization, rather than a controller-managed Gas City session.
+The shared Beads mismatch described above remains outside this pack's scope.
+GitHub Actions also passed all six client regressions.
