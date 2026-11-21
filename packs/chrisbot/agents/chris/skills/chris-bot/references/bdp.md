@@ -60,7 +60,7 @@ waiting;410 means restart an expired selection. Never treat failures as no match
 The optional local `verify` wording check is not factual or voice certification;
 `--max-words` applies only to an actual user-requested word bound.
 
-Pinned source: PR403 e108a3241e8127e5325748e9325aedd984ff5117.
+Pinned source: PR403 5ea7cb385deb3027742984c0ef8a7f2442a91260.
 The updated BDP repository tool passes this private candidate in its v0.2 read-only
 profile. Production runtime qualification and explicit promotion approval remain
 required before release. Conversation checks do not replace protocol qualification.
