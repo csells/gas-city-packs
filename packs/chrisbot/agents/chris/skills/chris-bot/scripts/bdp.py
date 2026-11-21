@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic BDP retrieval; no credentials, models or non-BDP routes."""
-import argparse,json,os,re,sys,time,unicodedata,urllib.request,urllib.parse,urllib.error
-MEDIA='application/vnd.bdp.v0.1+json'
+import argparse,base64,json,os,re,sys,time,unicodedata,uuid,urllib.request,urllib.parse,urllib.error
+MEDIA='application/json'
 BASE=os.environ.get('CHRIS_BOT_BDP_ORIGIN','https://chris-bot.sellsbrothers.com').rstrip('/')
 
 class BdpHttpError(RuntimeError):
@@ -33,31 +33,37 @@ def request(path,body=None):
         if status!=200:raise BdpHttpError(status,result)
         return result
 
-def field(name):return {'op':'field','of':{'op':'binding','name':'b'},'path':['properties',*name.split('.')]}
-def compare(name,op,value):return {'op':'compare','operator':op,'left':field(name),'right':{'op':'literal','value':value}}
-def query(selection,form='resources'):
-    return request('/read?readVersion=1&operation=query',{'query':{'ir':'bdp-query-design-1','profile':'query','selection':selection,'result':{'form':form}}})['result']
+def condition(kind,**fields):return {'kind':'cond','condition':{'kind':kind,**fields}}
+def compare(name,op,value):return condition('compare',field=['body',*name.split('.')],op=op,value=value)
+def call(name,args):
+    result=request('/stdlib/'+name+':call',{'arguments':[{'name':k,'value':v} for k,v in args.items()],'idempotencyKey':uuid.uuid4().hex})
+    outcome=result['outcome']
+    if outcome['kind']!='success':raise ValueError('BDP operation did not succeed: '+json.dumps(outcome))
+    return outcome['value']
+def query(where):
+    items=[];after=None;seen=set()
+    while True:
+        page=call('query',{'where':where,'request':{'limit':100,**({'after':after} if after else {})}})
+        items.extend(page['items'])
+        if page.get('head'):return {'items':items}
+        after=page['cursor']
+        if after in seen:raise ValueError('BDP repeated a continuation cursor')
+        seen.add(after)
 def resource_view(resource):
-    # The search-only normalized duplicate adds no evidence for the answer.
-    # Retain original text, attribution and identity; HTTP logs keep the full wire record.
-    return {**resource,'properties':{k:v for k,v in resource['properties'].items() if k!='search'}}
+    return {**resource,'body':{k:v for k,v in resource['body'].items() if k!='search'}}
 def search(args):
     terms=[compact(t) for t in args.terms]
-    predicates=[{'op':'typeIs','of':{'op':'binding','name':'b'},'type':'https://sellsbrothers.com/ns/chris-bot/'+('source' if args.sources else 'passage'),'match':'exact'},
-                {'op':'or','operands':[{'op':'contains','text':field('search.compact'),'substring':{'op':'literal','value':t}} for t in terms]}]
+    predicates=[condition('is-type',type='chris-bot/'+('source' if args.sources else 'passage'),match='exact'),
+                {'kind':'any','of':[condition('matches',field=['body','search','compact'],using='substring',pattern=t) for t in terms]}]
     if not args.fiction:predicates.append(compare('genre','ne','fiction'))
     if not args.unverified:predicates.append(compare('attribution.confidence','ne','unverified'))
     for key,value in [('kind',args.kind),('voice',args.voice)]:
         if value:predicates.append(compare(key,'eq',value))
     if args.since:predicates.append(compare('published','ge',args.since))
     if args.until:predicates.append(compare('published','lt',args.until))
-    selection={'op':'filter','input':{'op':'scan','collection':'beads'},'bind':'b','predicate':{'op':'and','operands':predicates}}
-    if args.count:return query(selection,'count')
-    try:result=query(selection)
-    except BdpHttpError as error:
-        if error.status!=413:raise
-        result=query(selection,'count')
-        return {'count':result['count'],'refine':'Result exceeds a delivery bound. Narrow with --since/--until, --kind, a longer phrase, or --sources; no partial result was returned.'}
+    where={'kind':'all','of':predicates}
+    if args.count:return {'count':call('count',{'where':where})}
+    result=query(where)
     limit=args.limit if args.limit is not None else (50 if args.sources else 12)
     items=rank_matches(result['items'],terms,limit,recent=args.recent)
     order='publication date first' if args.recent else 'topic titles and substantive attributed sources first, date within each group'
@@ -65,27 +71,32 @@ def search(args):
 
 def rank_matches(items,terms,limit,recent=False):
     def key(r):
-        p=r['properties'];substantive=p.get('kind')!='tweet'
+        p=r['body'];substantive=p.get('kind')!='tweet'
         title=compact(p.get('source_title') or p.get('title') or '')
         firsthand=(p.get('voice')=='chris' and p.get('kind')!='talk') or p.get('speakers')=='labeled'
-        relevance=(substantive and any(t in title for t in terms),substantive,firsthand,p.get('published',''),r['id'])
+        relevance=(substantive and any(t in title for t in terms),substantive,firsthand,p.get('published',''),r['id']['id'])
         return (p.get('published',''),*relevance) if recent else relevance
     ranked=sorted(items,key=key,reverse=True);selected=[];seen={}
     for r in ranked:
-        source=r['properties'].get('source_id') or r['id']
+        source=r['body'].get('source_id') or r['id']['id']
         if seen.get(source,0)>=2:continue
         selected.append(r);seen[source]=seen.get(source,0)+1
         if len(selected)>=limit:break
     return selected
 
 def context(ref,unverified=False):
-    if not ref.startswith(('http://','https://')):ref=BASE+'/sources/'+urllib.parse.quote(ref,safe='')
+    if not ref.startswith(('http://','https://')):
+        if not ref.startswith('sources/'):
+            ref='sources/'+base64.urlsafe_b64encode(ref.encode()).decode().rstrip('=')
+        ref=BASE+'/'+ref
     source=request(ref)
-    if not source['type'].endswith('/source'):raise ValueError('Context requires a source Bead')
-    if source['properties'].get('attribution',{}).get('confidence')=='unverified' and not unverified:raise ValueError('Unverified transcript: use --unverified only to examine the transcript as an artifact, never as verified personal testimony.')
-    selection={'op':'endpoints','input':{'op':'walk','roots':{'op':'refs','collection':'beads','references':[source['id']]},'direction':'outgoing'},'side':'target'}
-    items=query(selection)['items']
-    return {'source':resource_view(source),'passages':[resource_view(r) for r in sorted(items,key=lambda r:r['properties']['ordinal'])]}
+    if source['type']!='chris-bot/source':raise ValueError('Context requires a source Bead')
+    if source['body'].get('attribution',{}).get('confidence')=='unverified' and not unverified:raise ValueError('Unverified transcript: use --unverified only to examine the transcript as an artifact, never as verified personal testimony.')
+    links=query({'kind':'all','of':[condition('is-type',type='chris-bot/contains-passage',match='exact'),condition('compare',field=['body','source','id'],op='eq',value=source['id']['id'])]})['items']
+    targets=[r['body']['target']['id'] for r in links]
+    items=query(condition('compare',field=['id','id'],op='in',value=targets))['items'] if targets else []
+    if {r['id']['id'] for r in items}!=set(targets):raise ValueError('Incomplete linked source context')
+    return {'source':resource_view(source),'passages':[resource_view(r) for r in sorted(items,key=lambda r:r['body']['ordinal'])]}
 def review_draft(draft):
     flags=[]
     for sentence in re.split(r'(?<=[.!?])\s+',draft):
