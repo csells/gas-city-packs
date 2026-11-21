@@ -1,6 +1,6 @@
 {
   "source": "csells/sb8",
-  "commit": "406aa8a3d",
+  "commit": "398001b03c8241172518a1ea77683d18a47b755c",
   "path": "chris-bot/skill/chris-bot",
   "files": {
     "SKILL.md": "039a1151323acefdb0bd7db37b66fa895b086de0d884158c413b8f487e5796ed",
@@ -10,5 +10,7 @@
     "scripts/bdp.py": "e8c64c973a0960a5f564a240d17b043b30e65f36339bee1f4b22e7476a22890a"
   },
   "upstream_bdp_commit": "c7d21865a929c042ecfc95ae5ddb3f2a67fb51d5",
-  "release_state": "PRIVATE CANDIDATE; compliance gate not passed"
+  "release_state": "PRIVATE CANDIDATE; compliance gate not passed",
+  "source_branch": "rebuild/chris-bot-bdp-403",
+  "private_provider_protocol_revision": "pr403-c7d2186-read3"
 }
