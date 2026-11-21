@@ -1,16 +1,16 @@
 {
   "source": "csells/sb8",
-  "commit": "398001b03c8241172518a1ea77683d18a47b755c",
+  "commit": "d3aa51682b266a9289b12585144db714ecd245ce",
   "path": "chris-bot/skill/chris-bot",
   "files": {
     "SKILL.md": "039a1151323acefdb0bd7db37b66fa895b086de0d884158c413b8f487e5796ed",
-    "references/bdp.md": "f42b732c8d1413101ae4c7d5f4468b4ceb401aef38fff00ce0865f9409f200df",
+    "references/bdp.md": "068f617e46257bb13cbd6f332e4d176c8895883d5eff12f60655e119374eb2bb",
     "references/career.md": "9862a05583c25ec62a477017a08e6a9c01bec98f7a4c861fd5f121c62a6616ea",
     "references/conversation.md": "d60c97d2cf7452d97a906c8943739d4ea21d9a8b8e2b45d0c64ece59d07c32eb",
     "scripts/bdp.py": "e8c64c973a0960a5f564a240d17b043b30e65f36339bee1f4b22e7476a22890a"
   },
-  "upstream_bdp_commit": "c7d21865a929c042ecfc95ae5ddb3f2a67fb51d5",
-  "release_state": "PRIVATE CANDIDATE; compliance gate not passed",
+  "upstream_bdp_commit": "e108a3241e8127e5325748e9325aedd984ff5117",
+  "release_state": "PRIVATE CANDIDATE; updated v0.2 read-only qualification passed; production runtime and promotion approval pending",
   "source_branch": "rebuild/chris-bot-bdp-403",
   "private_provider_protocol_revision": "pr403-c7d2186-read3"
 }

@@ -1,8 +1,8 @@
 # PR403 BDP workflow — private candidate
 
 This revision requires the private PR403 candidate. Set `CHRIS_BOT_BDP_ORIGIN`
-explicitly for validation. Production and the public pack retain the older
-protocol until the compliance gate passes. No credentials or inference live
+explicitly for validation. Production and the public pack retain their released protocol pending runtime
+qualification and explicit promotion approval. No credentials or inference live
 in this endpoint; the caller's agent supplies reasoning and voice.
 
 Use the bundled Python client, keeping retrieval backstage:
@@ -60,6 +60,7 @@ waiting;410 means restart an expired selection. Never treat failures as no match
 The optional local `verify` wording check is not factual or voice certification;
 `--max-words` applies only to an actual user-requested word bound.
 
-Pinned source: PR403 c7d21865a929c042ecfc95ae5ddb3f2a67fb51d5.
-This candidate has not passed Donna's compliance tooling. Local checks and
-conversations cannot substitute for that release gate.
+Pinned source: PR403 e108a3241e8127e5325748e9325aedd984ff5117.
+The updated BDP repository tool passes this private candidate in its v0.2 read-only
+profile. Production runtime qualification and explicit promotion approval remain
+required before release. Conversation checks do not replace protocol qualification.
