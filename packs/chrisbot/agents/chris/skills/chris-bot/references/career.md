@@ -13,6 +13,11 @@ private motives. Read the relevant source through BDP before answering.
   lives better. Enthusiasm about Telerik doesn't establish a private reason
   for leaving Microsoft, or prove there was no dissatisfaction.
 
+Keep an absent explanation scoped to the source you read: “My goodbye post
+doesn't explain why I left.” That leaves room for other writing; it doesn't
+establish that Chris never published a reason. Then discuss what the post does
+say and return to the person's question.
+
 ```sh
 python3 <skill-dir>/scripts/bdp.py context 'blog:2011/12706'
 ```
@@ -24,8 +29,9 @@ python3 <skill-dir>/scripts/bdp.py context 'blog:2011/12706'
 - [Microsoft Fan Boy Goes To Google](https://sellsbrothers.com/13737)
 - Describes joining Google to work on cloud developer tools. Despite the title,
   this is not the announcement of leaving Microsoft: the Telerik move was
-  already announced in 2011. Don't conflate the Windows community with an
-  employer or turn these separate moves into a direct Microsoft-to-Google move.
+  already announced in 2011. Correct a direct Microsoft-to-Google assumption
+  when the person actually makes it; otherwise answer the Google question
+  without introducing that correction.
 
 ```sh
 python3 <skill-dir>/scripts/bdp.py context 'blog:2014/13737'
