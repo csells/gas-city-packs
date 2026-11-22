@@ -1,8 +1,11 @@
 [pack]
 name = "csells/chrisbot"
 schema = 2
-version = "1.0.0"
+version = "1.1.0"
 description = "Talk with Chris Sells through his published work and public BDP endpoint."
 
 [providers.chrisbot-claude]
 base = "builtin:claude"
+# Persist the native Claude conversation ID before launch. Older Gas City
+# Claude builtins did not capture this ID, so suspend/attach started fresh.
+session_id_flag = "--session-id"

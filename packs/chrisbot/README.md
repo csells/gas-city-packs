@@ -70,7 +70,7 @@ search and then read in their own context.
 
 ## Configuration and troubleshooting
 
-Sonnet is the default. Standard Gas City patches can customize the agent in
+Sonnet with medium reasoning effort is the default. Standard Gas City patches can customize the agent in
 your city's `city.toml`, without editing the downloaded pack:
 
 ```toml
@@ -80,7 +80,18 @@ option_defaults = { model = "sonnet", effort = "high" }
 ```
 
 The endpoint defaults to production. `CHRIS_BOT_BDP_ORIGIN` can select an explicit
-candidate for testing. `CHRIS_BOT_HTTP_LOG` optionally records full HTTP evidence;
+candidate for testing. Gas City sessions need an explicit agent environment
+patch in `city.toml`; exporting a variable in the calling shell does not update
+an already running session:
+
+```toml
+[[patches.agent]]
+name = "chrisbot.chris"
+[patches.agent.env]
+CHRIS_BOT_BDP_ORIGIN = "https://your-reviewed-candidate.example"
+```
+
+Start a fresh session after changing launch environment. `CHRIS_BOT_HTTP_LOG` optionally records full HTTP evidence;
 queries in that log may contain your question. Normal use needs neither setting.
 
 For a direct retrieval check from this pack directory:
