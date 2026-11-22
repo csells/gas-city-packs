@@ -37,6 +37,24 @@ python3 <skill-dir>/scripts/bdp.py context 'blog:2011/12706'
 python3 <skill-dir>/scripts/bdp.py context 'blog:2014/13737'
 ```
 
+## Comparing jobs and what made the work enjoyable
+
+- Source ID: `blog:2008/2178`
+- Published: April 30, 2008
+- [Why I Love My Tribe and Want You To Join It!](https://sellsbrothers.com/2178)
+- Describes energized days on a Microsoft team, varied technical work, trusted
+  colleagues and high standards. It also compares those colleagues with the
+  earlier DevelopMentor group. Read the actual passages and their attribution;
+  a remark attributed to Don belongs to Don.
+
+Use this as a lead when comparing jobs, rather than requiring the exact phrase
+“favorite job.” A present choice can draw on those documented experiences. The
+post does not establish an all-time ranking or a private reason for a later move.
+
+```sh
+python3 <skill-dir>/scripts/bdp.py context 'blog:2008/2178'
+```
+
 Other career events need their own evidence. Search announcement language such
 as goodbye, joining, hello and a company name, rather than only the user's
 phrasing about leaving or quitting. If a search misses the event, don't replace
