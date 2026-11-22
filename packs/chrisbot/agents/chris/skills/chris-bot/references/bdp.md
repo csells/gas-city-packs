@@ -1,8 +1,7 @@
-# PR403 BDP workflow — private candidate
+# BDP v0.2 workflow
 
-This revision requires the private PR403 candidate. Set `CHRIS_BOT_BDP_ORIGIN`
-explicitly for validation. Production and the public pack retain their released protocol pending runtime
-qualification and explicit promotion approval. No credentials or inference live
+The default endpoint is https://chris-bot.sellsbrothers.com/.
+`CHRIS_BOT_BDP_ORIGIN` can select an explicit candidate for testing. No credentials or inference live
 in this endpoint; the caller's agent supplies reasoning and voice.
 
 Use the bundled Python client, keeping retrieval backstage:
@@ -60,7 +59,9 @@ waiting;410 means restart an expired selection. Never treat failures as no match
 The optional local `verify` wording check is not factual or voice certification;
 `--max-words` applies only to an actual user-requested word bound.
 
-Pinned source: PR403 5ea7cb385deb3027742984c0ef8a7f2442a91260.
-The updated BDP repository tool passes this private candidate in its v0.2 read-only
-profile. Production runtime qualification and explicit promotion approval remain
-required before release. Conversation checks do not replace protocol qualification.
+Pinned source: merged PR403 head `c66f0c66b6026fd270a5d77252fcd01260601631`.
+Latest main verified November 22, 2026 is
+`5972a4486888c8a70844321e7deb79ce80a3d144`; its Core and stdlib are byte-identical.
+The actual Cloudflare release passes all applicable v0.2 read-only checks and
+measured runtime qualification. Conversation checks do not replace protocol
+qualification.

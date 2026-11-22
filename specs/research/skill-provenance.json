@@ -1,16 +1,17 @@
 {
   "source": "csells/sb8",
-  "commit": "b53dd89305591bc640265e316f76614bc2649493",
   "path": "chris-bot/skill/chris-bot",
   "files": {
     "SKILL.md": "926577ecae4e3d94f2d08cead23dc0c0a98f4e6e478fe2b10bce57ae246056ef",
-    "references/bdp.md": "57056b827cc8c64d2b51ef07bd86debbbb5248e5bcc33cb095338b40915efa60",
+    "references/bdp.md": "cd44a05f7429774003de2f930a4b12341e82938ef49a8be6c2a84c8e7ea03eb0",
     "references/career.md": "ea03b3e3dc551b4bbeca65924d0d6783fb9d5bf498553d57352fc28089441897",
     "references/conversation.md": "d60c97d2cf7452d97a906c8943739d4ea21d9a8b8e2b45d0c64ece59d07c32eb",
     "scripts/bdp.py": "e8c64c973a0960a5f564a240d17b043b30e65f36339bee1f4b22e7476a22890a"
   },
   "upstream_bdp_commit": "c66f0c66b6026fd270a5d77252fcd01260601631",
-  "release_state": "LOCAL REVIEW CANDIDATE; actual Edge read-only qualification passes on frozen v10. Main/stable release held under Chris's instruction.",
-  "source_branch": "rebuild/chris-bot-bdp-403",
-  "private_provider_protocol_revision": "pr403-5ea7-read4"
+  "release_state": "Chris authorized coordinated v0.2 endpoint/skill/pack release on2026-11-22. Pack1.1.0 targets production root BDPv0.2.",
+  "source_branch": "release/chris-bot-v02",
+  "private_provider_protocol_revision": "pr403-5ea7-read4",
+  "latest_upstream_main": "5972a4486888c8a70844321e7deb79ce80a3d144",
+  "commit": "7c50f32e0"
 }

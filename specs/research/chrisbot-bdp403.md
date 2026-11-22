@@ -1,35 +1,30 @@
-# Private PR403 pack revision
+# Chrisbot v0.2 release validation
 
-The pack targets merged PR403 head
-`c66f0c66b6026fd270a5d77252fcd01260601631`. Exact source skill files are copied
-from the private sb8 checkpoint recorded in `skill-provenance.json`; all five
-hashes match. Stable remainsv0.1, so this candidate needs an explicitly configured
-v0.2 origin and must be released together with the endpoint, not installed
-against current stable. Public packmain remains unchanged.
+Pack1.1.0 targets production BDPv0.2 at https://chris-bot.sellsbrothers.com/.
+All five bundled skill files match the exact sb8 release source recorded in
+[skill-provenance.json](skill-provenance.json). The endpoint is anonymous and
+deterministic; the consuming factory supplies Sonnet and Python3.10+.
 
-The v0.2 candidate passes the scoped checker on actual Cloudflare Edge:
-1,721 exchanges/73,643 resources, with overlapping full exports, search/traversal
-and a real fresh-binding SSE drain/reconnect. The earlier local heap diagnostic
-remains failed; actual Edge outcomes do not establish a measured heap margin or
-unlimited-load guarantee. No stable promotion is claimed; the local checker is
-not upstream certification.
+Qualification: the Node24.22.1 independent checker passes1,721HTTPexchanges
+over73,643resources,32applicable execution rows, with82normative/Appendix E
+clauses accounted for. Core/stdlib source hashes match latest upstream main
+5972a4486888c8a70844321e7deb79ce80a3d144. The checker extension is submitted
+for upstream review in [BDP PR406](https://github.com/gastownhall/bdp/pull/406);
+this is not upstream certification.
 
-Actual installed Gas City1.4.2 controller/session/attach/suspend/resume preserves
-one native Claude UUID and recalls the earlier project/advice. The pack supplies
-`session_id_flag="--session-id"` through the existing provider interface because
-that version's builtin does not capture Claude hook IDs. No GC runtime or shared
-Dolt schema was changed; a supported file-provider test city was used. Sonnet
-medium is the agent default. The test used frozen pack inputs; a subsequent
-skill-only correction was separately tested in a three-turn native Sonnet
-conversation to remove unsupported personal-experience setup. Continuity is not
-an overall factual/voice certification or unlimited-context guarantee.
+Six client regression tests pass. Live source search and relationship-based
+context acquisition pass for both the source skill and bundled client. The
+installed Gas City1.4.2 controller/materialized pack previously passed actual
+suspend/attach/resume using one native Claude UUID in a supported file-provider
+city. The pack supplies session_id_flag through the existing provider interface;
+shared Dolt/runtime is unchanged. The release changes the pack version and
+protocol-reference status only; conversational instructions, client logic and
+resume configuration match the evaluated candidate.
 
-Conversation work also includes40 baseline,40 corrected and three focused
-webinar turns. No turn/topic/follow-up caps were added. Six client tests pass.
-Source/history evidence remains outside the VM in the owning thread storage.
-No push to public packmain or stable endpoint occurred. Dedicated disposable
-workers.dev staging is registered for the provider's actual Edge validation.
-Fresh Sonnet tests against that stage follow actual book/career Links, preserve
-conversation context and offer a tentative sourced career choice without
-requiring a previously published ranking. Follow-up advice stays conversational.
-Final skill hashes match the provider checkpoint above; no turn/topic caps.
+Native Sonnet evaluations include40baseline/40corrected turns and focused
+career, webinar and attribution follow-ups. Tests exercise ongoing conversation
+without adding turn/topic/word caps; they do not claim unlimited context or
+indistinguishability from Chris. No Fable or model judge was used.
+
+Production verification and exact source/pack release commits are retained in
+the owning sb8 release evidence and publication receipts.
