@@ -90,3 +90,23 @@ The test harness ran the native Claude provider after Gas City prompt rendering
 and skill materialization, rather than a controller-managed Gas City session.
 The shared Beads mismatch described above remains outside this pack's scope.
 GitHub Actions also passed all six client regressions.
+
+
+## Version 1.2.0: Core 0.2.3
+
+The `update/chrisbot-core-023` branch carries the exact five skill/client files
+from the provider release, pinned by `skill-provenance.json`. It uses
+`/stdlib/{name}/-/call`. The default endpoint is `https://chris-bot.sellsbrothers.com/`;
+`CHRIS_BOT_BDP_ORIGIN` remains available for explicit testing.
+
+The Python suite passes seven tests, including the action-fence route regression.
+A fresh native Sonnet conversation using this pack's actual skill completed three
+continuing turns against the staged BDP service, with retained HTTP receipts and
+clean conversation input. Existing Gas City template/session configuration is
+unchanged; that lifecycle was not requalified by this protocol-only migration.
+
+Provider qualification uses Core `33dc2f2` and PR442 `38797b3` with the required
+compactFilter schema correction. The actual Worker passes32 applicable cases,
+with116 normative clauses accounted. The local 128 MiB sampled-memory check remains historical failed evidence;
+release readiness is verified separately on the actual Cloudflare Edge runtime. Exact source hashes and
+conversation evidence are retained with the provider's Core0.2.3 verification.

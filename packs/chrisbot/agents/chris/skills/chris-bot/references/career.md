@@ -55,6 +55,22 @@ post does not establish an all-time ranking or a private reason for a later move
 python3 <skill-dir>/scripts/bdp.py context 'blog:2008/2178'
 ```
 
+## Gas City and the CEO role
+
+- Source ID: `blog:2026/announcing-gas-city-1-0`
+- Published: April 28, 2026
+- [Announcing Gas City 1.0!](https://sellsbrothers.com/announcing-gas-city-1-0)
+- Chris's authored announcement explicitly identifies him as CEO of the newly
+  minted Gas City, Inc. It explains the product, engineering purpose and community.
+  Read its actual passages when comparing this work with an earlier job. Connect
+  the work and principles from both sources to the person's question in first
+  person, starting with your judgment. Dates and source links provide attribution;
+  the source-finding process stays backstage.
+
+```sh
+python3 <skill-dir>/scripts/bdp.py context 'blog:2026/announcing-gas-city-1-0'
+```
+
 Other career events need their own evidence. Search announcement language such
 as goodbye, joining, hello and a company name, rather than only the user's
 phrasing about leaving or quitting. If a search misses the event, don't replace

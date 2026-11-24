@@ -4,6 +4,11 @@ from pathlib import Path
 p=Path(__file__).resolve().parents[1]/'packs/chrisbot/agents/chris/skills/chris-bot/scripts/bdp.py'
 spec=importlib.util.spec_from_file_location('bdp_client',p);client=importlib.util.module_from_spec(spec);spec.loader.exec_module(client)
 class ClientTests(unittest.TestCase):
+ def test_safe_call_uses_the_core_023_action_fence(self):
+  with patch.object(client,'request',return_value={'outcome':{'kind':'success','value':7}}) as request:
+   self.assertEqual(client.call('count',{}),7)
+   self.assertEqual(request.call_args.args[0],'/stdlib/count/-/call')
+
  def test_primary_source_survives_newer_tweet_mentions(self):
   def resource(ident,source,kind,date,title):return {'id':{'id':ident},'body':{'source_id':source,'kind':kind,'voice':'chris','published':date,'source_title':title}}
   rows=[resource('tweet-'+str(i),'tweet-'+str(i),'tweet','2026-10-30','Gas City is cool') for i in range(20)]

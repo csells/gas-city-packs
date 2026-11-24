@@ -36,7 +36,7 @@ def request(path,body=None):
 def condition(kind,**fields):return {'kind':'cond','condition':{'kind':kind,**fields}}
 def compare(name,op,value):return condition('compare',field=['body',*name.split('.')],op=op,value=value)
 def call(name,args):
-    result=request('/stdlib/'+name+':call',{'arguments':[{'name':k,'value':v} for k,v in args.items()],'idempotencyKey':uuid.uuid4().hex})
+    result=request('/stdlib/'+name+'/-/call',{'arguments':[{'name':k,'value':v} for k,v in args.items()],'idempotencyKey':uuid.uuid4().hex})
     outcome=result['outcome']
     if outcome['kind']!='success':raise ValueError('BDP operation did not succeed: '+json.dumps(outcome))
     return outcome['value']

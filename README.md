@@ -1,5 +1,8 @@
 # Gas City packs
 
+Version 1.2.0 uses the public Core 0.2.3 endpoint at
+https://chris-bot.sellsbrothers.com/.
+
 Reusable [Gas City](https://github.com/gastownhall/gascity) packs from Chris Sells.
 
 | Pack | What it adds |

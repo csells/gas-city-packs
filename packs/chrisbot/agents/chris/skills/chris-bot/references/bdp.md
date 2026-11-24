@@ -1,6 +1,8 @@
-# BDP v0.2 workflow
+# BDP Core0.2.3 workflow
 
-The default endpoint is https://chris-bot.sellsbrothers.com/.
+The skill uses the public Core 0.2.3 endpoint at
+https://chris-bot.sellsbrothers.com/. No endpoint configuration is needed for
+normal use.
 `CHRIS_BOT_BDP_ORIGIN` can select an explicit candidate for testing. No credentials or inference live
 in this endpoint; the caller's agent supplies reasoning and voice.
 
@@ -36,11 +38,16 @@ Find related works by search and read each one's context.
 
 ## Native wire
 
-GET `/sys/capabilities` for discovery; GET `/` for List; GET `/{id}` for a resource.
+GET `/` for the versioned ServiceDescriptor and discovery links.
+GET `/sys/capabilities` for live capabilities; GET `/bdp/openapi` for the static
+contract. GET `/-/list` for List; GET `/{id}` for a resource.
+Projection uses `?select=` JSON or baseline `?include=`, `?omit=`, `?expand=`.
+List filters use `?where=` JSON. Actions follow the raw `/-/` fence: resource
+history is `/{id}/-/revisions` and export is `/-/export`.
 List returns `items`, opaque `cursor`, and `head:true` at exhaustion. A cursor binds
 the publication and selection. Use returned IDs rather than guessing URL encodings.
 
-POST `/stdlib/query:call` with JSON named arguments and a unique idempotencyKey:
+POST `/stdlib/query/-/call` with JSON named arguments and a unique idempotencyKey:
 
 ```json
 {"arguments":[{"name":"where","value":{"kind":"cond","condition":{"kind":"matches","field":["body","search","compact"],"using":"substring","pattern":"gorouter"}}},{"name":"request","value":{"limit":100}}],"idempotencyKey":"unique-request-key"}
@@ -59,9 +66,7 @@ waiting;410 means restart an expired selection. Never treat failures as no match
 The optional local `verify` wording check is not factual or voice certification;
 `--max-words` applies only to an actual user-requested word bound.
 
-Pinned source: merged PR403 head `c66f0c66b6026fd270a5d77252fcd01260601631`.
-Latest main verified November 22, 2026 is
-`5972a4486888c8a70844321e7deb79ce80a3d144`; its Core and stdlib are byte-identical.
-The actual Cloudflare release passes all applicable v0.2 read-only checks and
-measured runtime qualification. Conversation checks do not replace protocol
-qualification.
+Pinned Core0.2.3 source: `gastownhall/bdp` main
+`33dc2f2eca11503812e181dbdeed10c1c1387d0a`. The independent read-only checker
+is the re-landed PR442; its source/coverage pins are recorded with release
+verification. Protocol qualification and conversation evaluation are separate.

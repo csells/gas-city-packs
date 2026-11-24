@@ -1,5 +1,8 @@
 # Chrisbot
 
+Version 1.2.0 uses the public Core 0.2.3 endpoint at
+https://chris-bot.sellsbrothers.com/.
+
 Bring a representation of Chris Sells into your Gas City software factory as
 `chrisbot.chris`. The pack bundles the conversational skill, authentic writing
 examples, career source guide and dependency-free Python BDP client. It retrieves
