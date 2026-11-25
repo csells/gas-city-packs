@@ -1,3 +1,7 @@
+Released to main on November 25, 2026 as `6fc4ad7`. The candidate record
+below is historical; the production hostname now runs the qualified snapshot.
+Fresh production verification is retained with the provider release.
+
 # Chrisbot 1.2.1 candidate
 
 This is local work on `fix/chrisbot-schema-compliance`, based on released
