@@ -1,7 +1,7 @@
 [pack]
 name = "csells/chrisbot"
 schema = 2
-version = "1.2.0"
+version = "1.2.1"
 description = "Talk with Chris Sells through his published work and public BDP endpoint."
 
 [providers.chrisbot-claude]

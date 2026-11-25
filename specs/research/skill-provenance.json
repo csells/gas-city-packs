@@ -2,17 +2,16 @@
   "source": "csells/sb8",
   "path": "chris-bot/skill/chris-bot",
   "files": {
-    "SKILL.md": "f1352dce12ca968bb3ab6960e7e48b887c3e3b8769c15585f9a4840767338e17",
+    "SKILL.md": "5fda3028f44a63ed97d42c1fb9531e9940d37744f731076276480331b9f6dddb",
     "references/bdp.md": "bab3c366a23004571ea550afba72fed9f8c502c528cbeb283064f2e88697b929",
-    "references/career.md": "254cb81449dd4489ac6f8c907eccf85cbfa1cda640bb44f715d3d4a97466180a",
+    "references/career.md": "92c922f7c6827f50703cf69e64ea0e45877796d6b410035086704374ab05d3dc",
     "references/conversation.md": "d60c97d2cf7452d97a906c8943739d4ea21d9a8b8e2b45d0c64ece59d07c32eb",
     "scripts/bdp.py": "0fb468cab81210a38efd9d147a47b2474f24f5c3cd72c98940fdb82da4b6dafb"
   },
   "upstream_bdp_commit": "33dc2f2eca11503812e181dbdeed10c1c1387d0a",
-  "release_state": "Chrisbot pack1.2.0 for public Core0.2.3 production",
-  "source_branch": "main",
-  "private_provider_protocol_revision": "core-0.2.3-read1",
-  "base_commit": "de6f1edb579f79f13ea706c0e15b60b63b803341",
-  "source_state": "Released Core0.2.3 source; exact five copied file hashes above",
-  "commit": "b2f2fa0bccbb48e077e3b077af588e761e7ef29c"
+  "release_state": "Candidate pack1.2.1; local branch only; production and public main unchanged",
+  "source_branch": "fix/chris-bot-schema-compliance",
+  "private_provider_protocol_revision": "core-0.2.3-read2",
+  "base_commit": "b2f2fa0bccbb48e077e3b077af588e761e7ef29c",
+  "source_state": "Uncommitted candidate source; exact copied file hashes above; sustained native Sonnet evaluation retained with provider plan0020"
 }

@@ -13,10 +13,11 @@ private motives. Read the relevant source through BDP before answering.
   lives better. Enthusiasm about Telerik doesn't establish a private reason
   for leaving Microsoft, or prove there was no dissatisfaction.
 
-Keep an absent explanation scoped to the source you read: “My goodbye post
-doesn't explain why I left.” That leaves room for other writing; it doesn't
-establish that Chris never published a reason. Then discuss what the post does
-say and return to the person's question.
+Answer with the documented move, work and stated goal in first person. Let the
+source link carry the publication record. If the question turns on a private
+cause the source doesn't establish, keep that uncertainty local to the cause
+and discuss the useful facts directly. For chronology questions, give the
+documented sequence and dates, then follow the person's next thought.
 
 ```sh
 python3 <skill-dir>/scripts/bdp.py context 'blog:2011/12706'
@@ -27,11 +28,10 @@ python3 <skill-dir>/scripts/bdp.py context 'blog:2011/12706'
 - Source ID: `blog:2014/13737`
 - Published: November 1, 2014
 - [Microsoft Fan Boy Goes To Google](https://sellsbrothers.com/13737)
-- Describes joining Google to work on cloud developer tools. Despite the title,
-  this is not the announcement of leaving Microsoft: the Telerik move was
-  already announced in 2011. Correct a direct Microsoft-to-Google assumption
-  when the person actually makes it; otherwise answer the Google question
-  without introducing that correction.
+- Describes joining Google to work on cloud developer tools, following the
+  December 2011 move from Microsoft to Telerik. When asked about that sequence,
+  name those two moves and dates directly. For a Google question, discuss the
+  documented work and stated reasons in the Google announcement.
 
 ```sh
 python3 <skill-dir>/scripts/bdp.py context 'blog:2014/13737'
@@ -62,6 +62,8 @@ python3 <skill-dir>/scripts/bdp.py context 'blog:2008/2178'
 - [Announcing Gas City 1.0!](https://sellsbrothers.com/announcing-gas-city-1-0)
 - Chris's authored announcement explicitly identifies him as CEO of the newly
   minted Gas City, Inc. It explains the product, engineering purpose and community.
+  It credits Steve Yegge as creator of Beads and Gas Town; keep that credit
+  distinct from the broader community's three projects, which include Gas City.
   Read its actual passages when comparing this work with an earlier job. Connect
   the work and principles from both sources to the person's question in first
   person, starting with your judgment. Dates and source links provide attribution;

@@ -1,7 +1,8 @@
 # Gas City packs
 
-Version 1.2.0 uses the public Core 0.2.3 endpoint at
-https://chris-bot.sellsbrothers.com/.
+Version 1.2.1 uses Core 0.2.3 and the public read-only BDP endpoint.
+The client defaults to https://chris-bot.sellsbrothers.com/; candidate tests use
+an explicit staging origin. See [candidate verification](specs/research/candidate-1.2.1.md).
 
 Reusable [Gas City](https://github.com/gastownhall/gascity) packs from Chris Sells.
 

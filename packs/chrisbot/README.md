@@ -1,6 +1,6 @@
 # Chrisbot
 
-Version 1.2.0 uses the public Core 0.2.3 endpoint at
+Candidate version 1.2.1 uses the public Core 0.2.3 endpoint at
 https://chris-bot.sellsbrothers.com/.
 
 Bring a representation of Chris Sells into your Gas City software factory as
